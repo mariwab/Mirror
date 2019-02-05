@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace MariW.Mirror.GUI.Clock
 {
 
-    public class ClockViewModel : INotifyPropertyChanged
+    public class ClockViewModel : PropertyChangedBase
 
     {
         private ClockModel model;
@@ -36,22 +36,21 @@ namespace MariW.Mirror.GUI.Clock
         {
             this.model = model;
             UpdateTime();
+            model.PropertyChanged += ModelPropertyChanged;
+            
+        }
+
+        private void ModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(model.CurrentTime))
+            {
+                UpdateTime();
+            }
         }
 
         private void UpdateTime()
         {
-
             CurrentTime = $"Hora actual {model.CurrentTime.ToString("hh:mm:ss tt")}"; 
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        { 
-            if (PropertyChanged != null)
-            {
-           PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
         }
     }
 }

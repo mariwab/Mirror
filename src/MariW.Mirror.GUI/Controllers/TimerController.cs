@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MariW.Mirror.GUI.Clock;
 using Windows.UI.Xaml;
 
 namespace MariW.Mirror.GUI.Controllers
 {
-   static class TimerController
+    static class TimerController
     {
         public static void RegisterModel(BaseModel model)
         {
@@ -16,5 +17,6 @@ namespace MariW.Mirror.GUI.Controllers
             timer.Tick += model.TimerTick;
             timer.Start();
         }
-    }
+    }  
 }
+
