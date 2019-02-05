@@ -31,6 +31,23 @@ namespace MariW.Mirror.GUI.Clock
                 }                  
             }
         }
+        private string currentDate;
+        public string CurrentDate
+        {
+
+            get
+            {
+                return currentDate;
+            }
+            set
+            {
+                if (currentDate != value)
+                {
+                    currentDate = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         internal void Initialize(ClockModel model)
         {
@@ -50,7 +67,8 @@ namespace MariW.Mirror.GUI.Clock
 
         private void UpdateTime()
         {
-            CurrentTime = model.CurrentTime.ToString("hh:mm:ss tt"); 
+            CurrentTime = model.CurrentTime.ToString("hh:mm:ss tt");
+            CurrentDate = model.CurrentTime.ToString("d MMMM yyyy");
         }
     }
 }
