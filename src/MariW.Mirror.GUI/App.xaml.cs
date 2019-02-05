@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MariW.Mirror.GUI.Clock;
+using MariW.Mirror.GUI.Controllers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -38,7 +40,14 @@ namespace MariW.Mirror.GUI
         /// </summary>
         /// <param name="e">Información detallada acerca de la solicitud y el proceso de inicio.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
+
+
         {
+            var clockModel = new ClockModel();
+            clockModel.Update();
+            TimerController.RegisterModel(clockModel);
+            (Resources["clockViewModel"] as ClockViewModel).Initialize(clockModel);
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // No repetir la inicialización de la aplicación si la ventana tiene contenido todavía,
@@ -66,7 +75,7 @@ namespace MariW.Mirror.GUI
                     // Cuando no se restaura la pila de navegación, navegar a la primera página,
                     // configurando la nueva página pasándole la información requerida como
                     //parámetro de navegación
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    rootFrame.Navigate(typeof(ClockView), e.Arguments);
                 }
                 // Asegurarse de que la ventana actual está activa.
                 Window.Current.Activate();
