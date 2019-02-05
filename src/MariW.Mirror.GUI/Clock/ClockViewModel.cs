@@ -68,7 +68,7 @@ namespace MariW.Mirror.GUI.Clock
         private void UpdateTime()
         {
             CurrentTime = model.CurrentTime.ToString("hh:mm:ss tt");
-            CurrentDate = model.CurrentTime.ToString("d MMMM yyyy");
+            CurrentDate = model.CurrentTime.ToString("dddd dd De MMMM yyyy");
         }
     }
 }
