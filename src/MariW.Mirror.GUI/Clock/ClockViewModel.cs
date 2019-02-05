@@ -50,7 +50,7 @@ namespace MariW.Mirror.GUI.Clock
 
         private void UpdateTime()
         {
-            CurrentTime = $"Hora actual {model.CurrentTime.ToString("hh:mm:ss tt")}"; 
+            CurrentTime = model.CurrentTime.ToString("hh:mm:ss tt"); 
         }
     }
 }
